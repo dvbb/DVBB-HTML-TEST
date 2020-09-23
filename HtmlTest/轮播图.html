@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../bootstrap/js/jquery-1.12.4.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 900px;
+            height: 500px;
+            border: 1px solid;
+            margin: 100px auto;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 3300px;
+            height: 500px;
+            background: black;
+        }
+        ul>li{
+            float: left;
+        }
+        img{
+            width: 300px;
+            height: 500px;
+        }
+        button{
+            width: 100px;
+            height: 50px;;
+            margin:10px auto;
+        }
+        .StartBtn{
+            margin-left: 40%;
+            background-color: rgb(8, 146, 123);
+        }
+        .StopBtn{
+            background-color: rgb(231, 233, 153);
+        }
+    </style>
+    <script>
+        $(function(){
+            //0、定义图片偏移量、滚动函数
+            var offset=0,timer;
+            function autoPlay(){
+                //setInterval(function(){},50) 每50毫秒，执行一次function
+                timer=setInterval(function(){ 
+                    offset -= 5;
+                    if(offset <= -2400){
+                        offset = 0;
+                    }
+                    $("ul").css("marginLeft",offset);
+                },50);
+            }
+            //1、让图片滚动起来
+            autoPlay();
+            //2、监听li的移入移出
+            $("ul>li").hover(function(){
+                //clearInterval() 方法可取消由 setInterval() 函数设定的定时执行操作
+                //clearInterval() 方法的参数必须是由 setInterval() 返回的 ID 值。
+                clearInterval(timer);
+                $(this).siblings().fadeTo(100,0.5);
+            },function(){
+                $(this).siblings().fadeTo(100,1);
+                autoPlay();
+            });
+
+            //监听开始结束按钮
+            $(".StartBtn").click(function(){
+                //应该先结束timer，再autoPlay().否则可能会造成timer叠加，出现bug.
+                clearInterval(timer);
+                autoPlay();
+            });
+            $(".StopBtn").click(function(){
+                clearInterval(timer);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="../img/deemo1.png" alt=""></li>
+            <li><img src="../img/deemo2.png" alt=""></li>
+            <li><img src="../img/deemo3.png" alt=""></li>
+            <li><img src="../img/deemo4.png" alt=""></li>
+            <li><img src="../img/deemo5.png" alt=""></li>
+            <li><img src="../img/deemo6.png" alt=""></li>
+            <li><img src="../img/deemo7.png" alt=""></li>
+            <li><img src="../img/deemo8.png" alt=""></li>
+            <li><img src="../img/deemo1.png" alt=""></li>
+            <li><img src="../img/deemo2.png" alt=""></li>
+            <li><img src="../img/deemo3.png" alt=""></li>
+        </ul>
+    </div>        
+    <button class="StartBtn">开始动画</button>
+    <button class="StopBtn">结束动画</button>
+</body>
+</html>

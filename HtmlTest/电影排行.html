@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影排行榜</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="../bootstrap/js/jquery-3.4.1.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    
+    <style>
+        .container{
+            padding-top: 20px;
+        }
+        ul>li{
+            padding-top: 20px;
+        }
+        .content{
+            display: none;
+        }
+        .current .content{
+            display: block;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            
+            $("li").hover(function(){
+                $(this).addClass("current");
+            },function(){
+                $(this).removeClass("current");
+            });
+
+            
+
+        })
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">电影排行榜</div>
+            <div class="panel-body">
+            <ul >
+                <li ><span class="glyphicon glyphicon-film"></span>哈利波特
+                    <div class="content"> 
+                        <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614949805.webp">
+                        <h5>哈利波特是一个孤儿，从小寄养在姨妈家，受尽欺凌。但就在哈利11岁生日的时候，他意外收到了霍格沃茨学院的入学通知书。哈利从该学院派来接他的巨人海格口中得知，这是一间魔法学院，并得知了自己的身世，原来哈利的父母都是伟大的魔法师，在对付伏地魔的战斗中双双献身，唯有哈利幸免于难。 
+                            　　哈利进入霍格沃茨后，表现出了超乎想象的飞行天赋，得到麦格教授的推荐进入了格兰芬多的魁地奇球队。另一方面，哈利发现霍格沃茨学院内有一股黑暗势力似乎在暗暗滋长，揭开谜团的关键就在有凶恶的三头犬守护的房间内。 
+                            　　哈利、罗恩和赫敏三个好朋友决定探个究竟</h5>
+                    </div>
+                 </li>
+                 <li ><span class="glyphicon glyphicon-film"></span>寻梦环游记
+                    <div class="content"> 
+                        <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614500706.webp">
+                        <h5>热爱音乐的米格尔（安东尼·冈萨雷兹 Anthony Gonzalez 配音）不幸地出生在一个视音乐为洪水猛兽的大家庭之中，一家人只盼着米格尔快快长大，好继承家里传承了数代的制鞋产业。一年一度的亡灵节即将来临，每逢这一天，去世的亲人们的魂魄便可凭借着摆在祭坛上的照片返回现世和生者团圆。 
+                            　　在一场意外中，米格尔竟然穿越到了亡灵国度之中，在太阳升起之前，他必须得到一位亲人的祝福，否则就将会永远地留在这个世界里。米格尔决定去寻找已故的歌神德拉库斯（本杰明·布拉特 Benjamin Bratt 配音），因为他很有可能就是自己的祖父。途中，米格尔邂逅了落魄乐手埃克托（盖尔·加西亚·贝纳尔 Gael García Bernal 配音），也渐渐发现了德拉库斯隐藏已久的秘密</h5>
+                    </div>
+                 </li>
+                 <li ><span class="glyphicon glyphicon-film"></span>超能陆战队
+                    <div class="content"> 
+                        <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2614500883.webp">
+                        <h5>未来世界的超级都市旧京山（San Fransokyo），热爱发明创造的天才少年小宏，在哥哥泰迪的鼓励下参加了罗伯特·卡拉汉教授主持的理工学院机器人专业的入学大赛。他凭借神奇的微型磁力机器人赢得观众、参赛者以及考官的一致好评，谁知突如其来的灾难却将小宏的梦想和人生毁于一旦。大火烧毁了展示会场，而哥哥为了救出受困的卡拉汉教授命丧火场。身心饱受创伤的小宏闭门不出，哥哥生前留下的治疗型机器人大白则成为安慰他的唯一伙伴。原以为微型机器人也毁于火灾，谁知小宏和大白竟意外发现有人在某座废弃工厂内大批量地生产他的发明。 
+                            　　稍后哥哥的朋友们弗雷德等人也加入进来，他们穿上小宏发明的超级战士战斗装备，和怀有险恶阴谋的神秘对手展开较量</h5>
+                    </div>
+                 </li>
+            </ul>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614500706.webp">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614500706.webp">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614500706.webp">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614500706.webp">
+                </div>
+            </div>
+
+            </div>
+          </div>
+    </div>
+</body>
+</html>
