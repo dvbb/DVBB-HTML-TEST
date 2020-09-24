@@ -1,0 +1,286 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+#checkbox{
+    text-align: center;
+}
+.header{
+    width: 100%;
+    height: 7%;
+    background: green;
+}
+ .header img {
+    height: 70%;
+    padding: 10px 0 0 10px;
+    float: left;
+    line-height: auto;
+} 
+.header h4{
+    text-align: center;
+    float: right;
+    margin-right: 50px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.header .download{
+    height: 80%;
+    width: 150px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+    background: rgb(39, 71, 6);
+    border: 1px solid;
+    border-radius: 20px;
+}
+.header .download a{
+    line-height: 35px;
+    text-decoration: none;
+}
+.header a{
+    line-height: 50px;
+    float: right;
+    margin-right: 20px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
+}
+.header a:hover{
+    color: rgba(255, 255, 255,1);
+}
+
+/* body布局 */
+.body{
+    width: 100%;
+    height: 82%;
+    background: hotpink;
+}
+.body .main{
+    width: 85%;
+    height: 100%;
+    margin: auto;
+}
+.body .main .musicList{
+    width: 70%;
+    height: 100%;
+    background: rgb(134, 130, 128);
+    float: left;
+    overflow: auto;
+}
+/* 主体左边上方的按钮列表 */
+.body .main .musicList .toolbar .funcBlock{
+    width: 120px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 25px;
+    text-align: center;
+    float: left;
+    margin-right: 10px;
+}
+.body .main .musicList .toolbar .funcBlock:hover{
+    border: 1px solid black;
+}
+.body .main .musicList .toolbar .funcBlock a{
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.body .main .musicList .toolbar span{
+    margin-right: 10px;
+}
+
+/* 歌词列表的头 */
+.musicList .songlist {
+    list-style: none;
+    width: 100%;
+    height: 338px;
+    float: left;
+}
+.songlist div{
+    float: left;
+    position: relative;
+    line-height: 50px;
+    opacity: 0.5;
+}
+
+.songlist li{
+    height: 50px;
+    list-style:none;
+    border-bottom: 1px solid #fff;
+}
+
+.songlist_item:hover{
+    color: rgba(255, 255, 255,1);
+}
+.songlist .songlist_edit{
+    width: 5%;
+    height: 100%;
+    text-align: center;
+    background: rgb(106, 131, 110);
+}
+.songlist .songlist_edit i{   /*模拟复选框*/
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #ffffff;
+}
+.songlist  .songlist_num{
+    width: 5%;
+    height: 100%;
+    background: green;
+}
+.songlist .songlist_name{
+    width: 50%;
+    height: 100%;
+    background: rgb(151, 182, 151);
+}
+.songlist .songlist_name .listmenu{
+    float: right;
+    margin-right: 20px;
+    display: none;
+}
+.songlist .songlist_name .listmenu a{
+    display: inline-block;
+    margin-top: 5px;
+    width: 36px;
+    height: 36px;
+    background: url("../img/icon_list_menu.png") no-repeat 0 0 ;
+}
+.songlist .songlist_name .listmenu a:nth-child(1){
+    background-position: -120px 0;
+}
+.songlist .songlist_name .listmenu a:nth-child(2){
+    background-position: -120px -80px;
+}
+.songlist .songlist_name .listmenu a:nth-child(3){
+    background-position: -120px -120px;
+}
+.songlist .songlist_name .listmenu a:nth-child(4){
+    background-position: -120px -40px;
+}
+.songlist .songlist_author{
+    width: 20%;
+    height: 100%;
+    background: rgb(69, 104, 69);
+}
+.songlist .songlist_time{
+    width: 20%;
+    height: 100%;
+    background: rgb(116, 124, 116);
+}
+.songlist .listdel {
+    display: inline-block;
+    margin-top: 5px;
+    width: 36px;
+    height: 36px;
+    display: none;
+    background: url("../img/icon_list_menu.png") no-repeat -120px -160px ;
+}
+/* 主体右边的专辑信息 */
+.body .main .songInfo{
+    width: 30%;
+    height: 100%;
+    float: right;
+    background: paleturquoise;
+}
+.songInfo {
+    text-align: center;
+}
+.songInfo div{
+    margin-top: 10px;
+}
+.songInfo .song_info{
+    margin-left: 105px;
+
+}
+.songInfo .song_info .song_info_pic{
+    display: block;
+    background: url(../img/album_cover_player.png) no-repeat 0 0;
+    width: 201px;
+    height: 208px;
+    text-align: left;
+}
+.song_info_pic img{
+    background: url(../img/album.png) ;
+    width: 180px;
+    height: 180px;
+}
+
+/* 底部播放控制栏 */
+.footer{
+    width: 100%;
+    height: 11%;
+    background: indigo;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.footerbar{
+    width: 85%;
+    height: 100%;
+    margin: auto;
+    background: rgb(129, 76, 38);
+}
+.footerbar a{
+    display: inline-block;
+    text-decoration: none;
+    background: url(../img/player.png) no-repeat 0 0;
+    margin-right: 20px;
+    /* block-size: cover; 图片等比例缩放？*/
+}
+.footerbar .footbar_previous{
+    width: 19px;
+    height: 20px;
+    background-position: 0 -30px;
+}
+.footerbar .footbar_play{
+    width: 19px;
+    height: 29px;
+    background-position: 0 0;
+}
+.footerbar .footbar_next{
+    width: 19px;
+    height: 20px;
+    background-position: 0 -52px;
+}
+.footerbar .footbar_progressbar{
+    display:inline-block;
+    width: 660px;
+    height: 40px;
+    margin-right: 20px;
+    background: rgb(241, 11, 11);
+}
+.footerbar .footbar_mode{
+    width: 26px;    
+    height: 25px;
+    background-position: 0 -205px;
+}
+.footerbar .footbar_fav{
+    width: 24px;    
+    height: 21px;
+    background-position: 0 -96px;
+}
+.footerbar .footbar_down{
+    width: 22px;
+    height: 21px;
+    background-position: 0 -120px;
+}
+.footerbar .footbar_comment{
+    width: 24px;
+    height: 24px;
+    background-position: 0 -400px;
+}
+.footerbar .footbar_pure{
+    width: 74px;
+    height: 27px;
+    background-position: 0 -281px;
+}
+.footerbar .footbar_voicebar{
+    display:inline-block;
+    width: 150px;
+    height: 40px;
+    background: rgb(241, 11, 11);
+}
