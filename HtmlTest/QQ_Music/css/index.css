@@ -13,7 +13,6 @@ html,body{
 .header{
     width: 100%;
     height: 7%;
-    background: green;
 }
  .header img {
     height: 70%;
@@ -34,7 +33,6 @@ html,body{
     float: right;
     margin-right: 20px;
     margin-top: 5px;
-    background: rgb(39, 71, 6);
     border: 1px solid;
     border-radius: 20px;
 }
@@ -57,7 +55,6 @@ html,body{
 .body{
     width: 100%;
     height: 82%;
-    background: hotpink;
 }
 .body .main{
     width: 85%;
@@ -65,51 +62,53 @@ html,body{
     margin: auto;
 }
 .body .main .musicList{
-    width: 70%;
+    width: 65%;
     height: 100%;
-    background: rgb(134, 130, 128);
     float: left;
-    overflow: auto;
+    
 }
 /* 主体左边上方的按钮列表 */
 .body .main .musicList .toolbar .funcBlock{
     width: 120px;
     height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
     font-size: 25px;
     text-align: center;
     float: left;
     margin-right: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 .body .main .musicList .toolbar .funcBlock:hover{
-    border: 1px solid black;
+    border: 1px solid white;
 }
 .body .main .musicList .toolbar .funcBlock a{
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.5);
 }
 .body .main .musicList .toolbar span{
     margin-right: 10px;
 }
 
-/* 歌词列表的头 */
+/* 歌词列表 */
 .musicList .songlist {
     list-style: none;
     width: 100%;
-    height: 338px;
+    height: 500px;
     float: left;
+    overflow: auto;
 }
 .songlist div{
     float: left;
     position: relative;
     line-height: 50px;
+    
     opacity: 0.5;
 }
 
 .songlist li{
     height: 50px;
     list-style:none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255,0.7);
 }
 
 .songlist_item:hover{
@@ -119,7 +118,7 @@ html,body{
     width: 5%;
     height: 100%;
     text-align: center;
-    background: rgb(106, 131, 110);
+    
 }
 .songlist .songlist_edit i{   /*模拟复选框*/
     display: inline-block;
@@ -130,12 +129,12 @@ html,body{
 .songlist  .songlist_num{
     width: 5%;
     height: 100%;
-    background: green;
+    
 }
 .songlist .songlist_name{
     width: 50%;
     height: 100%;
-    background: rgb(151, 182, 151);
+    
 }
 .songlist .songlist_name .listmenu{
     float: right;
@@ -161,15 +160,21 @@ html,body{
 .songlist .songlist_name .listmenu a:nth-child(4){
     background-position: -120px -40px;
 }
+.listmenu .listmenu_play{
+    background-position: -120px 0;
+}
+.listmenu .listmenu_playing{
+    background-position: -80px -200px !important;
+}
 .songlist .songlist_author{
     width: 20%;
     height: 100%;
-    background: rgb(69, 104, 69);
+    
 }
 .songlist .songlist_time{
     width: 20%;
     height: 100%;
-    background: rgb(116, 124, 116);
+    
 }
 .songlist .listdel {
     display: inline-block;
@@ -181,19 +186,22 @@ html,body{
 }
 /* 主体右边的专辑信息 */
 .body .main .songInfo{
-    width: 30%;
+    width: 35%;
     height: 100%;
     float: right;
-    background: paleturquoise;
 }
 .songInfo {
     text-align: center;
+    color:rgba(255, 255, 255, 0.5);
+}
+.songInfo a{
+    color:rgba(255, 255, 255, 0.5);
 }
 .songInfo div{
     margin-top: 10px;
 }
 .songInfo .song_info{
-    margin-left: 105px;
+    margin-left: 135px;
 
 }
 .songInfo .song_info .song_info_pic{
@@ -208,12 +216,19 @@ html,body{
     width: 180px;
     height: 180px;
 }
-
+.song_info_lyrics li{
+    list-style-type: none;
+    margin-top: 20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.song_info_lyrics .cur{
+    color: #31c27c;
+}
 /* 底部播放控制栏 */
 .footer{
     width: 100%;
     height: 11%;
-    background: indigo;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -222,7 +237,7 @@ html,body{
     width: 85%;
     height: 100%;
     margin: auto;
-    background: rgb(129, 76, 38);
+    
 }
 .footerbar a{
     display: inline-block;
@@ -241,6 +256,9 @@ html,body{
     height: 29px;
     background-position: 0 0;
 }
+.footerbar .footbar_play2{
+    background-position: -30px 0;
+}
 .footerbar .footbar_next{
     width: 19px;
     height: 20px;
@@ -248,10 +266,46 @@ html,body{
 }
 .footerbar .footbar_progressbar{
     display:inline-block;
-    width: 660px;
+    width: 720px;
     height: 40px;
     margin-right: 20px;
-    background: rgb(241, 11, 11);
+    color: #fff;
+}
+.footbar_progressbar .pro_top{
+    width: 100%;
+    height: 25px;
+    
+}
+.footbar_progressbar .pro_top_name{
+    float: left;
+    opacity: 0.5;
+}
+.footbar_progressbar .pro_top_name:hover{
+    opacity: 1;
+}
+.footbar_progressbar .pro_top_time{
+    opacity: 0.5;
+    float: right;
+}
+.footbar_progressbar .probar{
+    width: 100%;
+    height: 5px;
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.probar .probar_line{
+    width: 23%;
+    height: 100%;
+    background: #fff;
+}
+.probar_line .probar_dot{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    position: relative;
+    top: -5px;
+    left: 100%;
 }
 .footerbar .footbar_mode{
     width: 26px;    
@@ -276,11 +330,66 @@ html,body{
 .footerbar .footbar_pure{
     width: 74px;
     height: 27px;
+    margin-right: 5px;
     background-position: 0 -281px;
 }
+
 .footerbar .footbar_voicebar{
     display:inline-block;
-    width: 150px;
+    width: 120px;
     height: 40px;
-    background: rgb(241, 11, 11);
+    position: absolute;
 }
+.footbar_voicebar .voicebar_icon{
+    width: 26px;
+    height: 21px;
+    background-position: 0 -144px;
+    position: relative;
+    left: 0;
+    top: 13px;
+    float: left;
+}
+.footbar_voicebar .voice_probar{
+    float: right;
+    width: 70%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+}
+.voice_probar .voice_probar_line{
+    width: 23%;
+    height: 100%;
+    background: #fff;
+}
+.voice_probar_line .voice_probar_dot{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    position: relative;
+    top: -5px;
+    left: 100%;
+}
+
+/* 背景蒙版 */
+.mask_bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;/*设置图层为-2*/
+    width: 100%;
+    height: 100%;
+    background: url("../img/album.png") no-repeat 0 0;
+    background-size: cover;     /*背景size设置为：cover，可以填满屏幕*/
+    filter: blur(50px);     /*设置10px的模糊*/
+}
+.mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;          
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+
