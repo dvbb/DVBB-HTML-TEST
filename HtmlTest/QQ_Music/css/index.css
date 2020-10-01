@@ -129,7 +129,12 @@ html,body{
 .songlist  .songlist_num{
     width: 5%;
     height: 100%;
-    
+}
+.songlist  .songlist_num2{
+    width: 5%;
+    height: 100%;
+    color: transparent !important;
+    background: url(../img/wave.gif) no-repeat 0 center;
 }
 .songlist .songlist_name{
     width: 50%;
@@ -237,7 +242,7 @@ html,body{
     width: 85%;
     height: 100%;
     margin: auto;
-    
+    user-select: none;
 }
 .footerbar a{
     display: inline-block;
@@ -294,7 +299,7 @@ html,body{
     background: rgba(255, 255, 255, 0.5);
 }
 .probar .probar_line{
-    width: 23%;
+    width: 0;
     height: 100%;
     background: #fff;
 }
@@ -378,9 +383,10 @@ html,body{
     z-index: -2;/*设置图层为-2*/
     width: 100%;
     height: 100%;
-    background: url("../img/album.png") no-repeat 0 0;
+    background:  no-repeat 0 0;
+    background-image: url("../img/album.png");
     background-size: cover;     /*背景size设置为：cover，可以填满屏幕*/
-    filter: blur(50px);     /*设置10px的模糊*/
+    filter: blur(50px);     /*设置50px的模糊*/
 }
 .mask{
     position: absolute;
