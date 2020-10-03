@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="app">
+    <!--视图-->
+    <img :src="images[currentIndex].imgSrc" alt="" @click="imgHandler">
+    <br>
+    <button @click="prevHandler">上一张</button>
+    <button @click="nextHandler">下一张</button>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src='lib/vue.js'></script>
+<script>
+    let vm = new Vue({   // 声明变量  实例化一个对象vm(指的是vue的实例)
+        el:"#app",    //绑定根元素
+        data(){
+            return{
+                images:[  //数据
+                    {id:1,imgSrc:"img/d1.jpg"},
+                    {id:2,imgSrc:"img/d2.jpg"},
+                    {id:3,imgSrc:"img/d3.jpg"},
+                    
+                ],
+                currentIndex:0 //一开始设置为 0
+            }
+        },
+        methods:{// 对象内容是js函数
+
+            nextHandler(e){
+                
+                this.currentIndex++;
+                //更改图片地址
+                if (this.currentIndex == 3){ //js的if判断语句
+                    this.currentIndex = 0;
+                }
+            },
+
+            prevHandler(e) {
+                
+                this.currentIndex--;
+                //更改图片地址
+                if (this.currentIndex == 0) { //js的if判断语句
+                    this.currentIndex = 3;
+                }
+            },
+
+            imgHandler(e){ //每一个事件都有一个event对象, 冒泡阻止默认事件学的
+                console.log(e.target);//当前目标对象 <img src="img/1.jpg" alt>
+                console.log(this); //实例化里面的对象this 指的都是当前实例化对象
+            }
+        },
+
+       
+    })
+
+</script>
+
+
+</body>
+</html>

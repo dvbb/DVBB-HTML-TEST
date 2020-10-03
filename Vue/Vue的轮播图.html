@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue轮播图</title>
+    <script src="lib/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            width: 900px;
+            height: 562px;
+            margin: 100px auto;
+            margin-top: 20px;
+            border: 1px solid ;
+        }
+        ul{
+            list-style: none; 
+        }
+        ul>li{
+            float: left;
+        }
+        button{
+            width: 80px;
+            height: 30px;
+            margin-top: 5px;
+        }
+        .btn_start{
+            margin-left: 320px ;
+            background: rgb(71, 172, 219);
+        }
+        .btn_stop{
+            background: rgb(228, 228, 150);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button class="btn_start" @click="start">开始动画</button>
+        <button class="btn_stop"  @click="stop">结束动画</button>
+        <div class="content">
+            <ul>
+                <li><img :src="images[currentIndex].imgSrc"></li>
+                <li><img :src="images[currentIndex+1].imgSrc"></li>
+                <li><img :src="images[currentIndex+2].imgSrc"></li>
+            </ul>
+            
+            
+        </div>
+    </div>
+   
+    
+
+    <script >
+        var vm = new Vue({
+            el: "#app" ,
+            data: {
+                images:[  //图片数据
+                    {id:1,imgSrc:"img/d1.jpg"},
+                    {id:2,imgSrc:"img/d2.jpg"},
+                    {id:3,imgSrc:"img/d3.jpg"},
+                    {id:4,imgSrc:"img/d4.jpg"},
+                    {id:5,imgSrc:"img/d5.jpg"},
+                    {id:6,imgSrc:"img/d1.jpg"},
+                    {id:7,imgSrc:"img/d2.jpg"},
+
+                ],
+                currentIndex: 0 ,//当前显示的图片
+                timer: null ,    //定时器
+            },
+            methods: {
+                start(){
+                    
+                    timer = setInterval(  () => { 
+                        if (this.currentIndex == 4) //如果图片到最后一张，回到第一张
+                            this.currentIndex = -1;
+                        this.currentIndex ++
+                    },1000);
+                },
+                stop(){
+                    clearInterval(timer);
+                }
+            }
+
+        })
+    </script>
+
+</body>
+</html>
