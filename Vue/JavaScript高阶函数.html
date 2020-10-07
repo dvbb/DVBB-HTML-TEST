@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript高阶函数</title>
+</head>
+<body>
+    
+    <script>
+
+    /*filter、map、reduce的使用*/
+        //1、filter的使用
+        //filter的回调只能返回Boolean，所以数据在map中处理
+        const nums = [10,20,111,222,444,40,50]
+        let num1 = nums.filter(function(n){
+            return n<100
+        })
+        console.log(num1);
+
+        //2、map的使用
+        let num2 = num1.map(function(n){
+            return n * 2
+        })
+        console.log(num2);
+
+        //3、reduce的使用
+        //用于累加。reduce(参数一，参数二)
+        //参数一：function( 先前的值 ，这次遍历中数组的值 )
+        //参数二：开始时，preValue的值。一般为0。
+        let total1 = num2.reduce(function( preValue , n ){
+            return preValue + n
+        },0)
+        console.log(total1);
+        /*
+            num2 = [20,40,80,100]
+                   preValue    n
+        第一次      0           20
+        第二次      20          40
+        第三次      60          80
+        第四次      140         100
+        结束时，return 140+100  , 即total = 240
+        */
+
+    /*高阶函数的链式编程*/
+    console.log("\n测试链式编程");
+    let total2 = nums.filter(function(n){
+        return n < 100
+    }).map(function(n){
+        return n * 2
+    }).reduce(function(preValue,n){
+        return preValue + n
+    },0)
+    console.log(total2);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌案例</title>
+    <script src="lib/vue.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+</head>
+<body>
+    
+    <div id="app" class="container">
+
+        
+        <h2></h2>
+        <div class="form-group">
+            <label for="exampleInputEmail1">新增一个新的品牌：</label>
+            <input type="text" v-model="id" placeholder="id">
+            <input type="text" v-model="name" @keyup.enter="add" placeholder="name" >
+            <button @click="add">新增</button>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">通过品牌名筛选：</label>
+            <input type="text" v-model="keywords">
+        </div>
+        <table class="table  table-hover table-bordered">
+            <tr>
+                <th>ID</td>
+                <th>品牌名</td>
+                <th>时间</td>
+                <th>操作</td>
+            </tr>
+            <tr  v-for="item in search(keywords)" :key="item.id">
+                <td>{{ item.id  }}</td>
+                <td>{{ item.name}}</td>
+                <td>{{ item.ctime | dateFormat }}</td>
+                <td><button @click="del(item.id)">删除</button></td>
+            </tr>
+        </table>
+        
+    </div>
+
+    <script>
+
+        Vue.filter('dateFormat', function(dateStr){ 
+            //function()的第一个参数是过滤器管道符前传递过来的参数
+            var dt = new Date(dateStr)  //根据dateStr获取特定的时间
+            var y = dt.getFullYear()
+            var m = dt.getMonth() + 1
+            var d = dt.getDate()
+            // return '${y}-${m}-${d}'  //模板字符串。但是报错
+
+            var hh = dt.getHours()
+            var mm = dt.getMinutes()
+            var ss = dt.getSeconds()
+
+            return y + '-' + m + '-' + d + '  ' + hh + ':' +  mm + ':' +  ss 
+            
+        })
+
+        var vm = new Vue({
+            el :'#app',
+            data: {
+                id: '',
+                name: '',
+                keywords: '',
+                list: [
+                    { id: 1 ,name: "奔驰",ctime: new Date()},
+                    { id: 2 ,name: "特斯拉",ctime: new Date()},
+                    { id: 3 ,name: "奥迪",ctime: new Date()},
+                    { id: 4 ,name: "宝马",ctime: new Date()}
+                ]
+                
+            },
+            methods: {
+                add(){
+                    var newitem = { id:this.id , name: this.name, ctime: new Date()}
+                    this.id = ''
+                    this.name = ''
+                    this.list.push(newitem)
+                },
+                del(id){
+
+                    var index = this.list.findIndex(item =>{
+                        if(item.id == id)
+                            return true
+                    }) 
+                    console.log(index);
+                    this.list.splice(index,1)
+                },
+                search(keywords){
+                    var newList = []
+                    //for循环，遍历list中的每一项
+                    //'str1'.indexOf('str2'): 字符串2在字符串1中首次出现的位置，若没有出现，返回-1
+                    this.list.forEach( item => {
+                        if(item.name.indexOf(keywords) != -1){
+                            newList.push(item)
+                        }
+                    })
+                    return newList
+                }
+            }
+        })
+    
+        
+       
+    
+    </script>
+
+</body>
+</html>

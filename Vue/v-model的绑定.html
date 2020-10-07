@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model的绑定</title>
+    <script src="lib/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .block{
+            width: 600px;
+            height: 115px;
+            border: 1px solid;
+            margin: 15px 0 0 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+
+        <div class="block">
+            <!-- v-model双向绑定radio
+                此时不用加入name="sex"。二者也为互斥
+            -->
+            <label for="male">
+                <input type="radio" id="male"   value="男" v-model="sex">男
+            </label>
+            <label for="female">
+                <input type="radio" id="female" value="女" v-model="sex">女
+            </label>
+            <h3>当前选择的性别是: {{ sex }}</h3>
+        </div>
+        
+        <div class="block">
+            <label for="agree">
+                <input type="checkbox" id="agree" v-model="isAgree">我以阅读并同意该协议
+            </label>
+            <h3>{{ isAgree }}</h3>
+            <button :disabled="!isAgree">下一步</button>
+        </div>
+
+        <div class="block">
+            <input type="checkbox" v-model="hobbies" value="篮球" >篮球
+            <input type="checkbox" v-model="hobbies" value="羽毛球" >羽毛球
+            <input type="checkbox" v-model="hobbies" value="足球" >足球
+            <input type="checkbox" v-model="hobbies" value="排球" >排球
+            <h2>您的爱好为：{{ hobbies }}</h2>
+        </div>
+
+        <div class="block">
+            <select v-model="fruits">
+                <option value="葡萄">葡萄</option>
+                <option value="桃子">桃子</option>
+                <option value="芒果">芒果</option>
+                <option value="雪梨">雪梨</option>
+            </select>
+            <h2>你选择的是 {{ fruits }}</h2>
+        </div>
+
+        <div class="block">
+            <select   v-model="heries" multiple>
+                <option value="蜘蛛侠">蜘蛛侠</option>
+                <option value="钢铁侠">钢铁侠</option>
+                <option value="雷神">雷神</option>
+                <option value="鹰眼">鹰眼</option>
+            </select>
+            <h2>你选择的是 {{ heries }}</h2>
+        </div>
+
+    </div>
+
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                sex: '男',
+                isAgree: false,
+                hobbies: [],
+                fruits: '桃子',
+                heries: []
+            },
+            methods:{
+
+            }
+        })
+    </script>
+
+</body>
+</html>
