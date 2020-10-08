@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="lib/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .additem{
+            width: 50%;
+            height: auto;
+            border: 1px solid;
+            margin: 10px 0 10px 10%;
+            position: relative;
+        }
+        .additem button{
+            margin: 2px 2px 2px 2px;
+        }
+        .shopcar{
+            width: 80%;
+            height: auto;
+            border: 1px solid;
+            margin: 10% auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <div class="additem">
+            <h2>向购物车新增一本书</h2>
+            <div class="input-group">
+                <span  class="input-group-addon" >序号</span>
+                <input class="form-control" v-model="SerialNum" readonly>
+            </div>
+            <div class="input-group">
+                <span  class="input-group-addon" >书籍名称</span>
+                <input class="form-control" v-model="addname">
+            </div>
+            <div class="input-group">
+                <span  class="input-group-addon" >出版日期</span>
+                <input class="form-control" v-model="addtime">
+            </div>
+            <div class="input-group">
+                <span  class="input-group-addon" >价格</span>
+                <input class="form-control" v-model="addprice">
+            </div>
+            <button class="btn btn-success" @click="additem">确认新增</button>
+            <button class="btn btn-warning" @click="reset">重填</button>
+        </div>
+        
+        
+        <div class="shopcar">
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                    <th>书籍名称</th>
+                    <th>出版日期</th>
+                    <th>价格</th>
+                    <th>购买数量</th>
+                    <th>操作</th>
+                </tr>
+                <tr v-for="item in books" :key="item.id"> 
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.time }}</td>
+                    <td>￥{{ item.price }}</td>
+                    <td>
+                        <span><button class="btn" @click="sub(item.id-1)">-</button></span>
+                        {{ item.num }}
+                        <span><button class="btn" @click="add(item.id-1)">+</button></span>
+                    </td>
+                    <td><button class="btn btn-primary" @click="del(item.id)">移除</button></td>
+                </tr>
+                
+            </table>
+            <h3>总价格：{{ total | priceFormat }}</h3>
+        </div>
+    </div>
+    
+
+
+    <script>
+
+        //定义过滤器，格式化价格，控制在小数点两位
+        Vue.filter("priceFormat",function(data){
+            return data.toFixed(2);
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                total: 0,
+                SerialNum:  0 ,
+                addname: '',
+                addtime: '',
+                addprice: 0,
+                books:[
+                    {id: 1,name: '作为意志和表象的世界',time: '2012-7',price: 22.5,num: 1},
+                    {id: 2,name: '局外人',time: '2008-4',price: 32.2,num: 1},
+                    {id: 3,name: '西西弗神话',time: '2011-9',price: 21.8,num: 1},
+                ]
+            },
+            methods: {
+                calculate(){
+                    let bookPrice = []
+                    for(let i =0; i<this.books.length;i++){
+                        bookPrice.push(this.books[i].price * this.books[i].num)
+                    }
+                    this.total = bookPrice.reduce(function(preValue,n){
+                        return preValue + n
+                    },0)
+                    this.SerialNum = this.books.length +1
+                },
+                add(id){
+                    this.books[id].num += 1
+                    this.calculate()
+                },
+                sub(id){
+                    if(this.books[id].num != 0){
+                        this.books[id].num -= 1
+                        this.calculate()
+                    }
+                },
+                del(id){
+                    var index = this.books.findIndex(item =>{
+                        if(item.id == id)
+                            return true
+                    }) 
+                    console.log(index);
+                    this.books.splice(index,1)
+                    this.sort()
+                    this.calculate()
+                },
+                //对book的序号进行重新排列
+                sort(){
+                    for(let i =0; i<this.books.length;i++){
+                        this.books[i].id = i + 1
+                    }
+                },
+                additem(){
+                    newitem = {id: 1,name: '',time: '',price: 0,num: 1}
+                    newitem.id = this.SerialNum
+                    newitem.name = this.addname
+                    newitem.time = this.addtime
+                    newitem.price = this.addprice
+                    this.books.push(newitem)
+                    this.calculate()
+                },
+                reset(){
+                    this.addname = ''
+                    this.addtime = ''
+                    this.addprice =0
+                }
+            }
+        })
+
+        //先执行一次，完成total的计算
+        vm.calculate()
+
+    </script>
+
+</body>
+</html>
