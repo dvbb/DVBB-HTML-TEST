@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    
+<div id='app'>
+    <!-- 向组件cpn传递vue实例中定义的数据 msg 和 games -->
+    <cpn :cmsg="msg" :cgames="games"></cpn>
+</div>
+
+
+<!-- 定义组件模板 -->
+<template id="mycpn">
+    <div>
+        <h2>{{ cmsg }}</h2>
+        <ul v-for="item in cgames">
+            <li>{{ item }}</li>
+        </ul>
+    </div>
+</template>
+
+<script>
+
+    //父组件向子组件传递数据，使用props
+    const cpn = {
+        template: '#mycpn',
+        //props内可做数据验证、数据限制
+        props:{
+            cmsg:{
+                /*
+                type设置类型，default设置默认值
+                required为true时，使用该模板必须给定cmsg，否则报错
+                */
+                type: String,
+                default: '这里可以提供默认值',
+                required: true  
+            },
+            cgames:{
+                /*
+                当设置的type为 数组或对象 时，default必须为函数
+                */
+                type: Array,
+                default(){
+                    return []
+                }
+            }
+        },
+        data(){
+            return {};
+        },
+        methods: {}
+    }
+
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello dvbb',
+            games: ["deemo","sora no kanada","lkong"]
+        },
+        //vu实例中定义一个component(组件)
+        components: {
+            cpn
+        }
+    })
+
+
+
+</script>
+
+</body>
+</html>

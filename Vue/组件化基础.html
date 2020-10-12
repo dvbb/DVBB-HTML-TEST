@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+
+ <div id='app'>
+     <cpn></cpn>
+     <cpn></cpn>
+ </div>
+ 
+ <!-- template标签中写模板的html -->
+<template id="cpn">
+    <div>
+        <h2>组件模板的分离写法</h2>
+        <p>内容</p>
+    </div>
+</template>
+
+ <script>
+
+    //vue2.x已经不推荐使用extend方法，直接传入{}对象即可，但本质上还是调用了extend
+    //1、创建组件构造器对象
+    // const cpnC = Vue.extend({
+    //     template: `
+    //     <div>
+    //         <h2>我是自定义标签</h2>
+    //         <p>我是自定义标签的内容</p>
+    //         <p>我是自定义标签的内容</p>
+    //         <p>我是自定义标签的内容</p>
+    //     </div>
+    //     `
+    // })
+    //2、注册组件.在这里注册的是全局组件，所有的vm实例都可以用。不推荐
+    //Vue.component('my-cpn',cpnC)
+
+     var vm = new Vue({
+         el: '#app',
+         data: {
+             msg: 'hello world' 
+         },
+         methods: {},
+         components:{
+            //2、注册组件--局部组件--语法糖--模板分离
+             'cpn': {
+                template: '#cpn'
+            }
+         }
+     })
+ </script>
+
+</body>
+</html>
