@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DV物流</title>
+    <script src="lib/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            user-select: none;
+        }
+        #app{
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+        }
+        .header{
+            width: 100%;
+            height: 10%;
+        }
+        .header .content{
+            width: 80%;
+            margin-left: 10%;
+        }
+        .header .content img{
+            float: left;
+        }
+        .header .content li{
+            list-style-type: none;
+            margin: 20px;
+            font-size: 20px;
+            float: left;
+        }
+        .header .content a{
+            text-decoration: none;
+            color: black;
+        }
+        .header .content a:hover{
+            color: rgb(92, 128, 194);
+        }
+        .main{
+            width: 100%;
+            height: 80%;
+            background: url("img/login_bg.png") no-repeat 0 0;
+            position: relative;
+        }
+        .main .login{
+            width: 380px;
+            height: 380px;
+            position: absolute;
+            right: 300px;
+            top: 100px;
+            border-radius: 15px;
+            background: white;
+        }
+        /* 登录框主体 */
+        .login .lg_head{
+            height: 70px;
+            width: 80%;
+            margin: 10% auto;
+            margin-top: 5px;
+            border-bottom: 1px solid;
+            position: relative;
+        }
+        .lg_head h1{
+            margin: 20px;
+            float: left;
+        }
+        .lg_head a{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .login .lg_main{
+            width: 80%;
+            margin: 10% auto;
+            margin-top: 5px;
+            background: green;
+        }
+        .login .lg_main .switch{
+            float: left;
+            width: 100%;
+            height: 50px;
+        }
+        .login .lg_main .item{
+            float: left;
+            width: 100%;
+            height: 50px;
+        }
+        .login .lg_main .item a{
+            margin-left: 40%;
+            color: tomato;
+        }
+        .login .lg_main .item label{
+            float: left;
+            width: 20%;
+            font-size: 20px;
+        }
+        .login .lg_main .item input{
+            float: left;
+            width: 75%;
+            font-size: 20px;
+        }
+        .login .lg_main .item button{
+            height: 30px;
+            width: 100%;
+            background: rgb(37, 37, 139);
+            color: white;
+        }
+        .footer{
+            width: 100%;
+            height: 10%;
+        }
+        .footer .content{
+            width: 60%;
+            margin-left: 20%;   
+        }
+        .footer .content .left{
+            width: 80%;
+            float: left;
+        }
+        .footer .content .right{
+           width: 20%;
+           float: left;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id='app'>
+        <div class="header">
+            <div class="content">
+                <img src="img/logo.png" alt="">
+                <ul>
+                    <li><a href="javascript:;">首页</a></li>
+                    <li><a href="javascript:;">预约寄件</a></li>
+                    <li><a href="javascript:;">批量寄件</a></li>
+                    <li><a href="javascript:;">帮助和反馈</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="login">
+                <div class="lg_head">
+                    <h1>会员登录</h1>
+                    <a href="javascript:;">免费注册</a>
+                </div>
+                <div class="lg_main">
+                    <div class="switch">
+                        <label for="choose1"><input type="radio" id="choose1" name="choose">微信扫描登录</label>
+                        <label for="choose2"><input type="radio" id="choose2" name="choose">账号密码登录</label>
+                        <label for="choose3"><input type="radio" id="choose3" name="choose">手机短信登录</label>
+                    </div>
+                    <div class="item"><label for="">账号:</label><input type="text"></div>
+                    <div class="item"><label for="">密码:</label><input type="password"></div>
+                    <div class="item"><a href="javascript:;">忘记密码?</a></div>
+                    <div class="item"><button>登录</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="content">
+                <div class="left">
+                    <h5>淘宝网 |天猫 |聚划算 |全球速卖通 |阿里巴巴国际交易市场 |1688 |阿里妈妈 |阿里云计算 |AliOS |飞猪 |UC |高德地图 |阿里通信</h5>
+                    <h5>钉钉 |友盟 |虾米 |阿里星球 |一淘 |蚂蚁金服 |支付宝 |网商银行 |口碑 |阿里健康 |阿里游戏</h5>
+                    <h5>©2015-2020 DVBB 版权所有 增值电信业务经营许可证： 浙B2-20160216浙公网安备3301002000117号</h5>
+                </div>
+                <div class="right">
+                    <img src="https://auth.zto.com/pc/img/pub/tel.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello dvbb'
+            },
+            methods: {}
+        })
+    </script>
+</body>
+</html>
