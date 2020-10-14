@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <H2>原来的cpn：</H2>
+        <cpn></cpn>
+        <H2>第二个cpn：</H2>
+        <cpn><span>更换！</span></cpn>
+        <h3>第三个cpn:</h3>
+        <cpn>
+            <span></span>
+            <button slot="left">按钮</button>
+            <i slot="center">更换的标题</i>
+            <button slot="right">右边的按钮</button>
+        </cpn>
+    </div>
+
+
+    <template id='cpn'>
+        <div>
+            <!-- 固名插槽不会被默认的slot替换 -->
+            <slot><span>未固名的插槽</span></slot>
+            <slot name="left"><span>左边的插槽</span></slot>
+            <slot name="center"><span>中间的插槽</span></slot>
+            <slot name="right"><span>右边的插槽</span></slot>
+            <slot><span>未固名的插槽</span></slot>
+            <slot><span>未固名的插槽</span></slot>
+        </div>
+    </template>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello dvbb'
+            },
+            methods: {},
+            components: {
+                cpn: {
+                    template: '#cpn'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <!-- 原来的cpn -->
+        <cpn></cpn>
+        <!-- 父组件获取cpn里面的数据，然后修改输出样式 -->
+        <cpn>
+            <!-- 子组件cpn绑定数据后，父组件就可以通过‘slot-scope’使用 -->
+            <template slot-scope="slotdata">
+                <!-- <span v-for="item in slotdata.data">{{ item }}  </span> -->
+                <span>{{ slotdata.data.join('  - ') }}</span>
+            </template>
+        </cpn>
+    </div>
+    
+
+
+    <template id="cpn">
+        <div>
+            <!-- 为slot绑定子组件cpn定义的数据languages -->
+            <slot :data="languages">
+                <ul>
+                    <li v-for="item in languages">{{ item }}</li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello dvbb',
+                data: {}
+            },
+            methods: {},
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data(){
+                        return {
+                            languages: ['java','python','php','javascript','go','swift']
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
