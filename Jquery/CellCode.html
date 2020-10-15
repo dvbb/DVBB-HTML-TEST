@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellCode</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="bootstrap/js/jquery-1.12.4.min.js"></script>
+    <script src="bootstrap/js/auto-line-number.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0 ;
+        }
+        .header{
+            width: 100%;
+        }
+        .left{
+            width: 8%; 
+            height: 100%;
+            border-style: solid; 
+            border-width: 1px;
+            float: left;
+           
+        }
+        .main{
+            width: 92%;
+            height: 720px;
+            background:rgb(208,208,208);
+            float: right;
+        }
+        .mainwork{
+            padding: 0;
+            margin: 10px;
+            width: 98.5%;
+            height: 700px;
+            background:white;
+        }
+        
+        .mainleft{
+            width: 30%;
+            height: 700px;
+            border-style: solid; 
+            border-width: 1px;
+            float: left;
+        }
+        .mainleftheader{
+          width: 100%;
+          height: 60px;
+          border-style: solid; 
+          border-width: 1px;
+        }
+        .allcode{
+            height: 320px;
+            border-style: solid; 
+            border-width: 1px;
+        }
+        .codeblock{
+            height: 320px;
+            border-style: solid; 
+            border-width: 1px;
+            
+        }
+
+        .mainright{
+            width: 70%;
+            height: 700px;
+            border-style: solid; 
+            border-width: 1px;
+            float: right;
+        }
+        .ide{
+            height: 450px;
+            border-style: solid; 
+            border-width: 1px;
+            
+        }
+        .console{
+            height: 250px;
+            border-style: solid; 
+            border-width: 1px;
+        }
+        .idebutton{
+            margin: 3px 3px 3px 0;
+            float: right;
+
+        }
+        textarea { 
+            width: 100%; 
+            background-color: #373737; 
+            overflow: auto; 
+            color: green; 
+            font-size: 16px; 
+        }
+        .content{
+          display: none;
+        }
+    </style>
+    <script>
+      $(function(){
+        $("#textarea").setTextareaCount();
+        $(".run").click(function(){
+          $(".content").css("display","block");
+        })
+        $(".fileout").click(function(){
+          $(".content").css("display","none");
+          $("#text").val(" ");
+        })
+        $("#addHTML").click(function(){
+          $("#text").val("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<title>Document</title>\n</head>\n<body>\n\n</body>\n</html>");
+        })
+      })
+    </script>
+</head>
+<body>
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CellCode</a>
+              </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li><a href="#">主页  </a></li>
+                  <li><a href="#">编译器</a></li>.
+                  <li><a href="#">论坛</a></li>
+                  <li><a href="#">我的专题</a></li>
+                  <li><a href="#">在线编程</a></li>
+                  <li><a href="#">题库</a></li>
+                  <li><a href="#">工具下载</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">账号设置</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">退出登录</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <div class="left">
+        <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">SVN</a></li>
+        <li><a href="#">iOS</a></li>
+        <li><a href="#">VB.Net</a></li>
+        <li><a href="#">Java</a></li>
+        <li><a href="#">PHP</a></li>
+    </div>
+    
+
+    <div class="main">
+        <div class="mainwork">
+            <div class="mainleft">
+                  <div class="mainleftheader">
+                    <form class="navbar-form navbar-left">
+                      <span class="label label-info">CellCode</span>
+                      <input type="text" class="form-control" placeholder="Search">
+                      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                  </div>
+                  <div class="allcode">
+                    <h4><strong>完整程序</strong></h4>
+                  </div>
+                  <div class="codeblock">
+                    <h4><strong>功能代码块</strong></h4>
+                    <button class="btn btn-success" id="addHTML">HTML</button>
+                  </div>
+            </div>
+            <div class="mainright">
+                <div class="ide">
+                    <button class="run idebutton btn btn-info" >编译测试</button>
+                    <button class="fileout idebutton btn btn-success">导出</button>
+                    
+                    <textarea type="text" id="text" class="text"style="height:410px"></textarea>
+                    <script>
+                      //这个是行号的列  
+                      $("#text").setTextareaCount({
+                          width: "30px",
+                          bgColor: "#000",
+                          color: "#FFF",
+                          display: "inline-block"
+                      });
+                    </script>
+                   
+                </div>
+                <div class="console" >
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#">Console</a></li>
+                        <li role="presentation"><a href="#">Markers</a></li>
+                        <li role="presentation"><a href="#">Properties</a></li>
+                        <li role="presentation"><a href="#">Servers</a></li>
+                        <li role="presentation"><a href="#">Data Source Explorer</a></li>
+                        <li role="presentation"><a href="#">Snippets</a></li>
+                        <!-- <textarea style="height: 205px;"></textarea> -->
+                      </ul>
+                      <div class="content">
+                        <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2843077145,2247188280&fm=26&gp=0.jpg" style="height: 50%; float: left;">
+                        <h3 style="margin: 10px;">编译器还没写。嘿嘿</h3>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

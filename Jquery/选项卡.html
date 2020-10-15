@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="bootstrap/js/jquery-3.4.1.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 510px;
+            height: 550px;
+            border: 1px solid steelblue;
+            margin: 50px auto;
+        }
+        .nav>li{
+            list-style: none;
+            width: 170px;
+            height: 50px;
+            background:gray;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+        }
+        .nav>.active{
+            background:blueviolet;
+        }
+        .content>li{
+            list-style: none;
+            display: none;
+        }
+        .content>.show{
+            display: block;
+            width: auto;
+        }
+        ul>li>img{
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+    <script>
+        /*
+        **通过鼠标的移入移出事件实现**.hover 存在小瑕疵
+        $(function(){
+            $(".nav>li").hover(function(){
+                $(this).addClass("active");
+                //获取当前选项卡的索引
+                //index为[0,1,2],及第几个li
+                var index=$(this).index();
+                //根据索引找到对应图片
+                //.eq()返回的是一个jq对象,通过index的序号,找到对应的第几个
+                var $li=$(".content>li").eq(index);
+                //为对应的图片添加显示,即.show
+                $li.addClass("show");
+            },function(){
+                $(this).removeClass("active");
+                var index=$(this).index();
+                var $li=$(".content>li").eq(index);
+                $li.removeClass("show");
+            });
+        })
+        */
+       
+       /*通过鼠标移入事件实现*/
+       $(function(){
+            $(".nav>li").mouseenter(function(){
+                $(this).addClass("active");
+                //.siblings()为除此之外，即$(this).siblings()为除开当前的li，之外所有的li
+                $(this).siblings().removeClass("active");
+                var index=$(this).index();
+                var $li=$(".content>li").eq(index);
+                $li.addClass("show");
+                $li.siblings().removeClass("show");
+                
+                //补充时间控制的对应模块
+                i=index;
+            });
+
+           
+        //加入时间控制
+        var timer;
+        var i=0;
+        function autoPlay(){
+            timer=setInterval(function(){ 
+                // $(".nav>li").eq(index);
+                console.log($(".nav>li").eq());
+
+                $(".nav>li").eq(0).removeClass("active");
+                $(".nav>li").eq(1).removeClass("active");
+                $(".nav>li").eq(2).removeClass("active");
+                $(".nav>li").eq(i).addClass("active");
+
+                $(".content>li").eq(0).removeClass("show");
+                $(".content>li").eq(1).removeClass("show");
+                $(".content>li").eq(2).removeClass("show");
+                $(".content>li").eq(i).addClass("show");
+
+                i++;
+                if(i==3)
+                    i=0;
+            },2000);
+        }
+        autoPlay();
+
+       })
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li class="active">deemo</li>
+            <li>alice</li>
+            <li>miss.mask</li>
+        </ul>
+        <ul class="content">
+            <li class="show"><img src="img/deemo1.png" alt=""></li>
+            <li><img src="img/deemo2.png" alt=""></li>
+            <li><img src="img/deemo3.png" alt=""></li>
+        </ul>
+    </div>
+    
+    
+</body>
+</html>
