@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <style>
+        .box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div id='app'>
+        <div class="box" v-drag></div>
+    </div>
+    
+    <script>
+
+        Vue.directive("drag",function(el){
+            el.onmousedown = function(e){
+                var StrX = e.pageX - this.offsetLeft;
+                var StrY = e.pageY - this.offsetTop;
+                document.onmousemove = function(e){
+                    el.style.left = e.pageX - StrX + "px";
+                    el.style.top = e.pageY - StrY + "px";
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = document.onmouseup = null;
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello dvbb'
+            },
+            methods: {}
+        })
+    </script>
+
+</body>
+</html>

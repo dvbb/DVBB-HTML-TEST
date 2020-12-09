@@ -110,45 +110,118 @@
             data: {
                 store: 0,
                 result: 0,
+                lastinput: 0,
                 opt: '+',
                 
             },
             methods: {
                 click_pn(){
                     this.result = parseFloat(this.result) * -1
+                    this.lastinput = this.result
                 },
                 click_point(){
                     this.result = this.result + '.'
+                    this.lastinput = this.result
                 },
                 click_0(){
-                    this.result = this.result + '0'
+                    if(this.result == '0'){
+                        this.result = '0'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '0'
+                        this.lastinput = this.result
+                    }
                 },
                 click_1(){
-                    this.result = this.result + '1'
+                    if(this.result == '0'){
+                        this.result = '1'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '1'
+                        this.lastinput = this.result
+                    }
                 },
                 click_2(){
-                    this.result = this.result + '2'
+                    if(this.result == '0'){
+                        this.result = '2'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '2'
+                        this.lastinput = this.result
+                    }
                 },
                 click_3(){
-                    this.result = this.result + '3'
+                    if(this.result == '0'){
+                        this.result = '3'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '3'
+                        this.lastinput = this.result
+                    }
                 },
                 click_4(){
-                    this.result = this.result + '4'
+                    if(this.result == '0'){
+                        this.result = '4'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '4'
+                        this.lastinput = this.result
+                    }
                 },
                 click_5(){
-                    this.result = this.result + '5'
+                    if(this.result == '0'){
+                        this.result = '5'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '5'
+                        this.lastinput = this.result
+                    }
                 },
                 click_6(){
-                    this.result = this.result + '6'
+                    if(this.result == '0'){
+                        this.result = '6'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '6'
+                        this.lastinput = this.result
+                    }
                 },
                 click_7(){
-                    this.result = this.result + '7'
+                    if(this.result == '0'){
+                        this.result = '7'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '7'
+                        this.lastinput = this.result
+                    }
                 },
                 click_8(){
-                    this.result = this.result + '8'
+                    if(this.result == '0'){
+                        this.result = '8'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '8'
+                        this.lastinput = this.result
+                    }
                 },
                 click_9(){
-                    this.result = this.result + '9'
+                    if(this.result == '0'){
+                        this.result = '9'
+                        this.lastinput = this.result
+                    }
+                    else{
+                        this.result = this.result + '9'
+                        this.lastinput = this.result
+                    }
                 },
                 click_del(){
                     this.store  = '0'
@@ -179,19 +252,19 @@
                 calculation(){
                     switch(this.opt){
                         case '+':
-                            this.result = parseFloat(this.store) + parseFloat(this.result);
+                            this.result = parseFloat(this.store) + parseFloat(this.lastinput)
                             this.store = this.result
                             break;
                         case '-':
-                            this.result = parseFloat(this.store) - parseFloat(this.result);
+                            this.result = parseFloat(this.store) - parseFloat(this.lastinput)
                             this.store = this.result
                             break;
                         case '*':
-                            this.result = parseFloat(this.store) * parseFloat(this.result);
+                            this.result = parseFloat(this.store) * parseFloat(this.lastinput)
                             this.store = this.result
                             break;
                         case '/':
-                            this.result = parseFloat(this.store) / parseFloat(this.result);
+                            this.result = parseFloat(this.store) / parseFloat(this.lastinput)
                             this.store = this.result
                             break;
                     }
